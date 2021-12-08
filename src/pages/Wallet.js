@@ -4,29 +4,14 @@ import { connect } from 'react-redux';
 import FormExpenses from '../components/FormExpenses';
 import WalletForm from '../components/WalletForm';
 import ExpenseTable from '../components/ExpenseTable';
+import Header from '../components/Header';
 
 class Wallet extends React.Component {
   render() {
     const { editExpense } = this.props;
     return (
       <div>
-        <header>
-          <p
-            data-testid="email-field"
-          >
-            {`E-mail: ${email}`}
-          </p>
-          <h4
-            data-testid="total-field"
-          >
-            {`Total: ${total}`}
-          </h4>
-          <h4
-            data-testid="header-currency-field"
-          >
-            {brl}
-          </h4>
-        </header>
+        <Header />
         {(editExpense) ? <FormExpenses /> : <WalletForm />}
         <ExpenseTable />
       </div>

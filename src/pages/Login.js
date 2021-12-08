@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import userLogin from '../actions';
@@ -26,7 +25,7 @@ class Login extends React.Component {
 
   render() {
     const { email, password } = this.state;
-    const { login } = this.props;
+    const { saveUser, history } = this.props;
     const six = 6;
     const buttonDisabled = !(email.includes('@') && email.endsWith('.com')
     && password.length >= six);
@@ -55,15 +54,15 @@ class Login extends React.Component {
               onChange={ this.handleChange }
             />
           </label>
-          <Link to="/carteira">
-            <button
-              type="button"
-              onClick={ () => login(email) }
-              disabled={ buttonDisabled }
-            >
-              Entrar
-            </button>
-          </Link>
+          <input
+            type="button"
+            value="Entrar"
+            disabled={ buttonDisabled }
+            onClick={ () => {
+              saveUser(email);
+              history.push('/carteira');
+            } }
+          />
         </form>
       </div>
     );
@@ -71,11 +70,12 @@ class Login extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  login: (userLoginData) => dispatch(userLogin(userLoginData)),
+  saveUser: (email) => dispatch(userLogin(email)),
 });
 
 Login.propTypes = {
-  login: PropTypes.func.isRequired,
+  saveUser: PropTypes.func.isRequired,
+  history: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default connect(null, mapDispatchToProps)(Login);
