@@ -1,21 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { fetchCurrencies, saveEditExpense } from '../actions';
+import { fetchCurrencies, fetchExchange } from '../actions';
 import FormInput from './FormInput';
 import SelectInput from './SelectInput';
 
-class FormExpenses extends React.Component {
-  constructor(props) {
-    super(props);
+class WalletForm extends React.Component {
+  constructor() {
+    super();
+
     this.state = {
-      value: '',
-      description: '',
+      value: 0,
       currency: 'USD',
       method: 'Dinheiro',
       tag: 'Alimentação',
+      description: '',
+      id: 0,
     };
-    this.importValuesToExpense = this.importValuesToExpense.bind(this);
+
     this.handleChange = this.handleChange.bind(this);
     this.sendExp = this.sendExp.bind(this);
   }
@@ -23,14 +25,6 @@ class FormExpenses extends React.Component {
   componentDidMount() {
     const { getCurrencies } = this.props;
     getCurrencies();
-    this.importValuesToExpense();
-  }
-
-  importValuesToExpense() {
-    const {
-      expense: { value, currency, method, tag, description },
-    } = this.props;
-    this.setState({ value, currency, method, tag, description });
   }
 
   handleChange({ target: { name, value } }) {
@@ -38,9 +32,10 @@ class FormExpenses extends React.Component {
   }
 
   sendExp() {
-    const { value, currency, method, tag, description } = this.state;
-    const { expense: { id, exchangeRates }, saveExpense } = this.props;
-    saveExpense({ value, currency, method, tag, description, id, exchangeRates });
+    const { value, currency, method, tag, description, id } = this.state;
+    const { saveExpense } = this.props;
+    saveExpense({ value, currency, method, tag, description, id });
+    this.setState({ id: id + 1, value: 0, description: '' });
   }
 
   render() {
@@ -88,7 +83,7 @@ class FormExpenses extends React.Component {
           value={ description }
           handleChange={ this.handleChange }
         />
-        <input type="button" value="Editar despesa" onClick={ () => this.sendExp() } />
+        <input type="button" value="Adicionar despesa" onClick={ () => this.sendExp() } />
       </form>
     );
   }
@@ -96,19 +91,17 @@ class FormExpenses extends React.Component {
 
 const mapStateToProps = (state) => ({
   currencies: state.wallet.currencies,
-  expense: state.wallet.expenseToChange,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  saveExpense: (expense) => dispatch(saveEditExpense(expense)),
+  saveExpense: (expense) => dispatch(fetchExchange(expense)),
   getCurrencies: () => dispatch(fetchCurrencies()),
 });
 
-FormExpenses.propTypes = {
+WalletForm.propTypes = {
   saveExpense: PropTypes.func.isRequired,
   getCurrencies: PropTypes.func.isRequired,
   currencies: PropTypes.objectOf.isRequired,
-  expense: PropTypes.objectOf.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(FormExpenses);
+export default connect(mapStateToProps, mapDispatchToProps)(WalletForm);

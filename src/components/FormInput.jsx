@@ -1,86 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class InputSelect extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      exchanges: [],
-      tags: ['Alimentação', 'Lazer', 'Trabalho', 'Transporte', 'Saúde'],
-      payType: ['Dinheiro', 'Cartão de crédito', 'Cartão de débito'],
-    };
-    this.currencyAPI = this.currencyAPI.bind(this);
-  }
-
-  componentDidMount() {
-    this.currencyAPI();
-  }
-
-  async currencyAPI() {
-    const response = await fetch('https://economia.awesomeapi.com.br/json/all');
-    const json = await response.json();
-    delete json.USDT;
-    const jsonKeys = Object.keys(json);
-    this.setState({
-      exchanges: jsonKeys,
-    });
-  }
-
+class FormInput extends Component {
   render() {
-    const { tags, payType, exchanges } = this.state;
-    const { onChangeFunction, state: { currency, method, tag } } = this.props;
+    const { title, type, name, id, value, handleChange } = this.props;
     return (
       <div>
-        <label htmlFor="currency">
-          Moeda:
-          <select
-            data-testid="currency-input"
-            value={ currency }
-            onChange={ (event) => onChangeFunction(event) }
-            name="currency"
-            id="currency"
-          >
-            {exchanges.map((curr) => (<option key={ curr } value={ curr }>{curr}</option>
-            ))}
-          </select>
+        <label htmlFor={ name }>
+          {title}
         </label>
-        <label htmlFor="method">
-          Método de pagamento:
-          <select
-            data-testid="method-input"
-            value={ method }
-            onChange={ (event) => onChangeFunction(event) }
-            name="method"
-            id="method"
-          >
-            {payType.map((pay) => (<option key={ pay } value={ pay }>{pay}</option>))}
-          </select>
-        </label>
-        <label htmlFor="tag">
-          Tag:
-          <select
-            data-testid="tag-input"
-            value={ tag }
-            onChange={ (event) => onChangeFunction(event) }
-            name="tag"
-            id="tag"
-          >
-            {tags.map((tg) => (<option key={ tg } value={ tg }>{tg}</option>))}
-          </select>
-        </label>
+        <input
+          type={ type }
+          name={ name }
+          data-testid={ id }
+          value={ value }
+          onChange={ (event) => handleChange(event) }
+        />
       </div>
     );
   }
 }
 
-InputSelect.propTypes = {
-  onChangeFunction: PropTypes.func.isRequired,
-  state: PropTypes.shape({
-    currency: PropTypes.string,
-    method: PropTypes.string,
-    tag: PropTypes.string,
-  }).isRequired,
-
+FormInput.propTypes = {
+  title: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  handleChange: PropTypes.func.isRequired,
 };
 
-export default InputSelect;
+export default FormInput;
