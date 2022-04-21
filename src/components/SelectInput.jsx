@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './selectInput.css';
 
 class SelectInput extends React.Component {
   render() {
     const { title, name, id, options, handleChange, idName, value } = this.props;
     return (
-      <div>
+      <div className='container select__container'>
         <label htmlFor={ idName }>
           {title}
         </label>

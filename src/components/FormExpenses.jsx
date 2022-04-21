@@ -88,7 +88,13 @@ class FormExpenses extends React.Component {
           value={ description }
           handleChange={ this.handleChange }
         />
-        <input type="button" value="Editar despesa" onClick={ () => this.sendExp() } />
+        <button
+        className='expense__btn'
+        type="button"
+        onClick={ () => this.sendExp() }
+        >
+          Editar despesa
+        </button>
       </form>
     );
   }

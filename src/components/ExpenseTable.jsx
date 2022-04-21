@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { changeExpense, deleteExpense } from '../actions';
+import './expenseTable.css';
 
 class ExpensesTable extends React.Component {
   constructor() {
@@ -27,18 +28,22 @@ class ExpensesTable extends React.Component {
           <td>{(value * ask).toFixed(2)}</td>
           <td>Real</td>
           <td>
-            <input
+            <button
+              className='table__btn'
               type="button"
               data-testid="edit-btn"
-              value="Editar"
               onClick={ () => editExpense(id) }
-            />
-            <input
+              >
+                Editar
+              </button>
+            <button
+              className='table__btn'
               type="button"
               data-testid="delete-btn"
-              value="Deletar"
               onClick={ () => removeExpense(id) }
-            />
+              >
+                Deletar
+              </button>
           </td>
         </tr>
       );
@@ -47,7 +52,7 @@ class ExpensesTable extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='table__container'>
         <table>
           <tr>
             <th>Descrição</th>

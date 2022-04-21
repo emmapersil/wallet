@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import './formInput.css';
 
 class FormInput extends Component {
   render() {
     const { title, type, name, id, value, handleChange } = this.props;
     return (
-      <div>
+      <div className='container form__input-container'>
         <label htmlFor={ name }>
           {title}
         </label>

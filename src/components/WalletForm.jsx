@@ -83,7 +83,13 @@ class WalletForm extends React.Component {
           value={ description }
           handleChange={ this.handleChange }
         />
-        <input type="button" value="Adicionar despesa" onClick={ () => this.sendExp() } />
+        <button
+        className='expense__btn'
+        type="button"
+        onClick={ () => this.sendExp() }
+        >
+          Adicionar despesa
+        </button> 
       </form>
     );
   }

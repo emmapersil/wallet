@@ -1,0 +1,26 @@
+.header__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: var(--color-bg-variant);
+  padding: 2rem;
+  width: 100%;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  margin-bottom: 2rem;
+}
+
+.balance__field {
+  color: var(--color-primary-variant);
+}
+
+/* === MEDIA QUERIES - MEDIUM DEVICES === */
+@media screen and (max-width: 1024px) {
+
+}
+/* === MEDIA QUERIES - SMALL DEVICES === */
+@media screen and (max-width: 600px) {
+    .email__field {
+      display: none;
+    }
+}

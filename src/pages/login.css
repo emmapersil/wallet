@@ -1,0 +1,29 @@
+.login__form {
+  height: 100vh;
+  margin: 0;
+  display:flex; 
+  flex-direction:column; 
+}
+
+.form__container {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  background: var(--color-bg-variant);
+  border-radius: 2rem;
+  align-items: center;
+}
+
+.input {
+  width: 100%;
+  height: 2rem;
+  padding: 0.8rem;
+  margin: 0.5rem;
+  box-sizing: border-box;
+  border-radius: 0.5rem;
+}
+
+h1 {
+  padding: 2rem;
+  font-size: 4rem;
+}

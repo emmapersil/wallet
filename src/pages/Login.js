@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { userLogin } from '../actions';
+import Footer from '../components/Footer';
+import './login.css';
 
 class Login extends React.Component {
   constructor(props) {
@@ -32,12 +34,15 @@ class Login extends React.Component {
     && password.length >= six);
 
     return (
-      <div>
-        <form>
+      <form className='login__form'>
+        <h1>Wallet</h1>
+        <div className='container form__container'>
+          <div className='form__item'>
           <label htmlFor="email-input">
-            Insira o e-mail:
+            E-mail:
             <input
               id="email-input"
+              className='input'
               data-testid="email-input"
               type="email"
               name="email"
@@ -45,9 +50,14 @@ class Login extends React.Component {
               onChange={ this.handleChange }
             />
           </label>
+          </div>
+
+          <div className='form__item'>
           <label htmlFor="password-input">
+            Senha:
             <input
               id="password-input"
+              className='input'
               data-testid="password-input"
               type="password"
               name="password"
@@ -55,8 +65,12 @@ class Login extends React.Component {
               onChange={ this.handleChange }
             />
           </label>
+          </div>
+
+          <div className='form__item'>
           <Link to="/carteira">
             <button
+              className={ buttonDisabled ? 'btn-disabled' : 'btn'}
               type="button"
               onClick={ () => login(email) }
               disabled={ buttonDisabled }
@@ -64,8 +78,10 @@ class Login extends React.Component {
               Entrar
             </button>
           </Link>
-        </form>
-      </div>
+          </div>
+        </div>
+        <Footer />
+      </form>
     );
   }
 }

@@ -1,0 +1,41 @@
+select {
+  width: 15rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: var(--color-light);
+  color: var(--color-primary-variant);
+  margin-bottom: 0.7rem;
+  margin-right: auto;
+}
+
+option {
+  background: var(--color-light);
+  color: var(--color-primary);
+}
+
+label {
+  width: 15rem;
+}
+
+.select__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* === MEDIA QUERIES - MEDIUM DEVICES === */
+@media screen and (max-width: 1024px) {
+
+}
+
+@media screen and (max-width: 600px) {
+  .select__container, label {
+    display: block;
+  }
+
+  select, option {
+    width: 8rem;
+  }
+
+}
