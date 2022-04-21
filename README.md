@@ -33,7 +33,7 @@ Front-end:
 * Pacotes NPM
 
 
-## Capturas de tabelas
+## Capturas de telas
 
 ![Login](assets/wallet-login.png)
 ---
