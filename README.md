@@ -35,9 +35,16 @@ Front-end:
 
 ## Capturas de tabelas
 
+#### Página de Login
 ![Login](assets/wallet-login.png)
 ---
+
+#### Página principal da carteira
 ![Wallet](assets/wallet-page.png)
+---
+
+#### Utilizando a carteira
+![Using Wallet](assets/using-wallet.gif)
 ---
 
 
