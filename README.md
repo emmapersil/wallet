@@ -3,7 +3,7 @@
 ![Wallet](https://c.tenor.com/taDMfYgcXrkAAAAd/money-wallet.gif)
 
 # Contexto
-Este projeto desenvolvido enquanto aluna na [Trybe](https://www.betrybe.com/), tinha o objetivo de criar uma aplicação que computa gastos em diferentes moedas e converte tudo para uma única moeda escolhida pelo usuário.
+Este projeto foi desenvolvido enquanto aluna na [Trybe](https://www.betrybe.com/), com o objetivo de criar uma aplicação que computa gastos em diferentes moedas e converte tudo para uma única moeda escolhida pelo usuário.
 
 
 ### Objetivos
@@ -31,12 +31,15 @@ Front-end:
 * Redux
 * HTML/CSS
 * Pacotes NPM
-
+---
 
 ## Capturas de telas
 
+#### Página de Login
 ![Login](assets/wallet-login.png)
 ---
+
+#### Página principal da carteira
 ![Wallet](assets/wallet-page.png)
 ---
 
